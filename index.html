@@ -1,26 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='App'>
     <head>
         <title>Fruit and Veggies</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
-        <script src="js/fruits_and_veggies_test.js"></script>
+        <script src="js/fruits_and_veggies.js"></script>
         <script src="js/app.js"></script>
     </head>
-    <body>
+    <body ng-controller='appCtrl'>
         <div class="container">
             <h1>Fruit and Veggies</h1>
             <div class="row">
                 <div class="col-sm-4">
-                    col 1
+                    Fruits
+                    <ul>
+                      <li ng-repeat="item in fruits track by $index">
+                        <h5 ng-class="{'red': pool.length === 0 && !isFruit(item)}">{{item}}</h5>
+                        <button class='btn btn-primary' ng-click="fruitToPool($index)">&rarr;</button>
+                      </li>
+                    </ul>
                 </div>
                 <div class="col-sm-4">
-                    col 2
+                    Pool
+                    <ul>
+                      <li ng-repeat="item in pool track by $index">
+                        <button class='btn btn-primary' ng-click="fruit($index)">&larr;</button>
+                        <h5>{{item}}</h5>
+                        <button class='btn btn-primary' ng-click="veggie($index)">&rarr;</button>
+                      </li>
+                    </ul>
+                    <h3 ng-show="hasWon">You won!</h3>
                 </div>
                 <div class="col-sm-4">
-                    col 3
+                    Veggies
+                    <ul>
+                      <li ng-repeat="item in veggies track by $index">
+                        <button class='btn btn-primary' ng-click="veggieToPool($index)">&larr;</button>
+                        <h5 ng-class="{'red': pool.length === 0 && !isVeggie(item)}">{{item}}</h5>
+                      </li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -1,1 +1,21 @@
 /* file for your css */
+button {
+  display: inline-block;
+}
+
+h5 {
+  display: inline-block;
+  width: 100px;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+   list-style-type: none;
+}
+
+.red {
+  color: red;
+}
